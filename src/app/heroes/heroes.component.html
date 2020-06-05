@@ -1,12 +1,5 @@
-
 <h2>My Heroes</h2>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-  </li>
-</ul>
+
 <div>
   <label>Hero name:
     <input #heroName />
@@ -17,7 +10,7 @@
   </button>
 </div>
 
-  <ul class="heroes">
+<ul class="heroes">
   <li *ngFor="let hero of heroes">
     <a routerLink="/detail/{{hero.id}}">
       <span class="badge">{{hero.id}}</span> {{hero.name}}
@@ -26,6 +19,14 @@
       (click)="delete(hero)">x</button>
   </li>
 </ul>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
+
 
 
 

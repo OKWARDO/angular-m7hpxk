@@ -15,15 +15,15 @@ export class HeroService {
 };
   constructor(private messageService: MessageService, private http: HttpClient) { }
 
-  /** GET heroes from the server */
-  // getHeroes(): Observable<Hero[]> {
-  //   return this.http.get<Hero[]>(this.heroesUrl)
-  //     .pipe(
-  //       tap(_ => this.log('fetched heroes')),
-  //       catchError(this.handleError<Hero[]>('getHeroes', []))
-  //     );
-  // }
-   /** GET hero by id. Return `undefined` when id not found */
+  // /** GET heroes from the server */
+   getHeroes(): Observable<Hero[]> {
+    return this.http.get<Hero[]>(this.heroesUrl)
+      .pipe(
+         tap(_ => this.log('fetched heroes')),
+         catchError(this.handleError<Hero[]>('getHeroes', []))
+      );
+  }
+  //  /** GET hero by id. Return `undefined` when id not found */
   getHeroNo404<Data>(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/?id=${id}`;
     return this.http.get<Hero[]>(url)

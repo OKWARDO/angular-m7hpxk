@@ -3,7 +3,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Hero } from './hero';
 
 
-@Injectable({providedIn: 'root',})
+@Injectable({providedIn: 'root'})
 export class InMemoryDataService implements InMemoryDbService{
 
     createDb() {
