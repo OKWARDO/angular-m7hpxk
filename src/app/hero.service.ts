@@ -16,13 +16,13 @@ export class HeroService {
   constructor(private messageService: MessageService, private http: HttpClient) { }
 
   /** GET heroes from the server */
-  getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
-      .pipe(
-        tap(_ => this.log('fetched heroes')),
-        catchError(this.handleError<Hero[]>('getHeroes', []))
-      );
-  }
+  // getHeroes(): Observable<Hero[]> {
+  //   return this.http.get<Hero[]>(this.heroesUrl)
+  //     .pipe(
+  //       tap(_ => this.log('fetched heroes')),
+  //       catchError(this.handleError<Hero[]>('getHeroes', []))
+  //     );
+  // }
    /** GET hero by id. Return `undefined` when id not found */
   getHeroNo404<Data>(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/?id=${id}`;
@@ -37,13 +37,15 @@ export class HeroService {
       );
   }
 
-getHeroes(id: number): Observable<Hero[]> {
-   const url = `${this.heroesUrl}/${id}`;
-  return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log('fetched hero id=${id}')),
-      catchError(this.handleError<Hero[]>('getHero id=${id}'))
+ /** GET hero by id. Will 404 if id not found */
+  getHero(id: number): Observable<Hero> {
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.get<Hero>(url).pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
-}
+  }
+
 /* GET heroes whose name contains search term */
 searchHeroes(term: string): Observable<Hero[]> {
   if (!term.trim()) {
@@ -51,8 +53,8 @@ searchHeroes(term: string): Observable<Hero[]> {
     return of([]);
   }
   return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
-    tap(x => x.length ?
-       this.log(`found heroes matching "${term}"`) :
+    tap(x => x.length ? 
+    this.log(`found heroes matching "${term}"`) :
        this.log(`no heroes matching "${term}"`)),
     catchError(this.handleError<Hero[]>('searchHeroes', []))
   );
