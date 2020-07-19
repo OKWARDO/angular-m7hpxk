@@ -8,16 +8,17 @@ export class InMemoryDataService implements InMemoryDbService{
 
     createDb() {
     const heroes = [
-      { id: 11, name: 'Dr Nice' },
-      { id: 12, name: 'Narco' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
+      { id: 11, name: 'Tiger Woods' },
+      { id: 12, name: 'Rory McIlroy' },
+      { id: 13, name: 'Dustin Johnson' },
+      { id: 14, name: 'Jason Day' },
+      { id: 15, name: 'John Rahm' },
+      { id: 16, name: 'Robert Allenby' },
+      { id: 17, name: 'Carl Pettersson' },
+      { id: 18, name: 'Darren Clarke' },
+      { id: 19, name: 'Martin Laird' },
+      { id: 20, name: 'Lucas Glover' }
+      
     ];
     return {heroes};
   }
